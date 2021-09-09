@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
-from marshmallow import fields
+from marshmallow import fields, Schema
 import enum
 
 
@@ -23,12 +23,19 @@ class Medio(enum.Enum):
    CASETE = 2
    CD = 3
 
+
+class Acceso(enum.Enum):
+   PRIVADO = 1
+   PUBLICO = 2
+
+
 class Album(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(128))
     anio = db.Column(db.Integer)
     descripcion = db.Column(db.String(512))
     medio = db.Column(db.Enum(Medio))
+    acceso = db.Column(db.Enum(Acceso), default=Acceso.PRIVADO)
     usuario = db.Column(db.Integer, db.ForeignKey("usuario.id"))
     canciones = db.relationship('Cancion', secondary = 'album_cancion', back_populates="albumes")
     
@@ -42,6 +49,8 @@ class EnumADiccionario(fields.Field):
     def _serialize(self, value, attr, obj, **kwargs):
         if value is None:
             return None
+        if isinstance(value, dict):
+            return value
         return {"llave": value.name, "valor": value.value}
 
 class CancionSchema(SQLAlchemyAutoSchema):
@@ -52,6 +61,9 @@ class CancionSchema(SQLAlchemyAutoSchema):
 
 class AlbumSchema(SQLAlchemyAutoSchema):
     medio = EnumADiccionario(attribute=("medio"))
+    acceso = EnumADiccionario(attribute=("acceso"))
+    pertenece = fields.Boolean()
+
     class Meta:
          model = Album
          include_relationships = True
@@ -62,3 +74,7 @@ class UsuarioSchema(SQLAlchemyAutoSchema):
          model = Usuario
          include_relationships = True
          load_instance = True
+
+
+class AlbumPatchSchema(Schema):
+    acceso = fields.String(load_default=Acceso.PRIVADO)
