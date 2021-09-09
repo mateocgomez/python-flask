@@ -9,11 +9,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
-    "postinstall": "ng build --prod"
+    "postinstall": "ng build"
   },
   "engines": {
     "node": "12.14",
-      "npm": "6.4.1"
+    "npm": "6.4.1"
   },
   "private": true,
   "dependencies": {
