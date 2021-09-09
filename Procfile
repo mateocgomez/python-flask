@@ -1,2 +1,2 @@
 web: gunicorn flaskr.app:app
-web: node server.js
+web: npm install server && node server/index.jsweb: node server.js
