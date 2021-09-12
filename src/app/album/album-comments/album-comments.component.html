@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-12 mt-3 mb-2 ms-2">
+        <h5 i18n>Comentarios</h5>
+    </div>
+
+    <div class="d-flex flex-column comment-section card py-2 mb-2">
+        <div class="bg-white p-2">
+            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="/assets/images/user_2.png" width="40">
+                <div class="d-flex flex-column justify-content-start ms-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">15 Enero 2020</span></div>
+            </div>
+            <div class="mt-2">
+                <p class="comment-text m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua 😌. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi (🇨🇴) ut aliquip ex ea commodo consequat. 👏🏼 👏🏼</p>
+            </div>
+        </div>
+    </div>
+    
+    <form action="" class="p-0" [formGroup]="albumCommentForm" (ngSubmit)="createComentarioAlbum(albumCommentForm.value)">
+        <textarea class="w-100 px-2 form-control shadow-none textarea mb-2" formControlName="texto" id="" rows="3" maxlength="128" i18n-placeholder placeholder="Agrega un comentario"></textarea>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" i18n>Comentar</button>
+        </div>
+    </form>
+</div>

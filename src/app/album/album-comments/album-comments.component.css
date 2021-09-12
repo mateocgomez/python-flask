@@ -1,0 +1,3 @@
+.comment-section:nth-child(odd) .user-info{
+    justify-content: flex-end;
+}
