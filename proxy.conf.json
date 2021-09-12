@@ -1,6 +1,6 @@
 {
     "/api/*":{
-        "target": "https://ionic-project-team02.herokuapp.com/",
+        "target": "https://ionic-project-team02.herokuapp.com",
         "secure": false,
         "logLevel": "debug",
         "pathRewrite":{
