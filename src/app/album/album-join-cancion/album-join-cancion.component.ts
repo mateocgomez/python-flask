@@ -95,7 +95,7 @@ export class AlbumJoinCancionComponent implements OnInit {
   }
 
   showSuccess(tituloAlbum: string, tituloCancion: string) {
-    this.toastr.success(`La canción ${tituloCancion} se agregó al album ${tituloAlbum}`, "Asociación exitosa");
+    this.toastr.success($localize`La canción ${tituloCancion} se agregó al album ${tituloAlbum}`, $localize`Asociación exitosa`);
   }
 
 }

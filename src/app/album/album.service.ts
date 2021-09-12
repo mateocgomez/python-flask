@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Album} from './album';
+import { Album, ComentarioAlbum} from './album';
 import { Cancion } from '../cancion/cancion';
 
 @Injectable({
@@ -52,8 +52,32 @@ export class AlbumService {
     return this.http.delete<Album>(`${this.backUrl}/album/${albumId}`, {headers: headers})
   }
 
+  cambiarAccessoAlbum(status: string, idUsuario: number, token: string, albumId: number): Observable<Album>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`       
+    })
+
+    const params = {
+      "acceso": status
+    }
+    
+    return this.http.patch<Album>(`${this.backUrl}/album/${albumId}`, params, {headers: headers})
+  }
+
   asociarCancion(albumId: number, cancionId: number): Observable<Cancion>{
     return this.http.post<Cancion>(`${this.backUrl}/album/${albumId}/canciones`, {"id_cancion": cancionId})
+  }
+
+  crearComentarioAlbum(comentario: ComentarioAlbum, token: string, albumId: number): Observable<ComentarioAlbum>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`       
+    })
+
+    // const comentario = {
+    //   "texto": content
+    // }
+    
+    return this.http.post<ComentarioAlbum>(`${this.backUrl}/album/${albumId}/comentarios`, comentario, {headers: headers})
   }
 
 }

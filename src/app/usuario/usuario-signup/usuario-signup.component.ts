@@ -49,7 +49,7 @@ export class UsuarioSignupComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success(`Se ha registrado exitosamente`, "Registro exitoso");
+    this.toastr.success($localize`Se ha registrado exitosamente`, $localize`Registro exitoso`);
   }
 
 }

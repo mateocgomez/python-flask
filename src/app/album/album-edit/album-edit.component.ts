@@ -92,11 +92,11 @@ export class AlbumEditComponent implements OnInit {
   }
 
   showWarning(warning: string){
-    this.toastr.warning(warning, "Error de autenticación")
+    this.toastr.warning(warning, $localize`Error de autenticación`)
   }
 
   showSuccess(album: Album) {
-    this.toastr.success(`El album ${album.titulo} fue editado`, "Edición exitosa");
+    this.toastr.success($localize`El album ${album.titulo} fue editado`, $localize`Edición exitosa`);
   }
 
 }

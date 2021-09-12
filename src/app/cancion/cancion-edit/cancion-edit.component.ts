@@ -77,11 +77,11 @@ export class CancionEditComponent implements OnInit {
   }
 
   showWarning(warning: string){
-    this.toastr.warning(warning, "Error de autenticación")
+    this.toastr.warning(warning, $localize`Error de autenticación`)
   }
 
   showSuccess(cancion: Cancion) {
-    this.toastr.success(`La canción ${cancion.titulo} fue editada`, "Edición exitosa");
+    this.toastr.success($localize`La canción ${cancion.titulo} fue editada`, $localize`Edición exitosa`);
   }
 
 }

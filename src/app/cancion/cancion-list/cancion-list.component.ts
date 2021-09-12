@@ -84,11 +84,11 @@ export class CancionListComponent implements OnInit {
   }
 
   showError(error: string){
-    this.toastr.error(error, "Error de autenticación")
+    this.toastr.error(error, $localize`Error de autenticación`)
   }
 
   showSuccess() {
-    this.toastr.success(`La canción fue eliminada`, "Eliminada exitosamente");
+    this.toastr.success($localize`La canción fue eliminada`, $localize`Eliminada exitosamente`);
   }
 
 }

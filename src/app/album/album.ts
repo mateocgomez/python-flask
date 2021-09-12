@@ -5,6 +5,8 @@ export class Album {
     anio: number;
     descripcion: string;
     medio: Medio;
+    acceso: Acceso;
+    pertenece: boolean;
     usuario: number;
     interpretes: Array<string>;
     canciones: Array<Cancion>
@@ -15,6 +17,8 @@ export class Album {
         anio: number,
         descripcion: string,
         medio: Medio,
+        acceso: Acceso,
+        pertenece: boolean,
         usuario: number,
         interpretes: Array<string>,
         canciones: Array<Cancion>
@@ -24,6 +28,8 @@ export class Album {
         this.anio = anio,
         this.descripcion = descripcion,
         this.medio = medio,
+        this.acceso = acceso,
+        this.pertenece = pertenece,
         this.usuario = usuario,
         this.interpretes = interpretes,
         this.canciones = canciones
@@ -31,6 +37,19 @@ export class Album {
 }
 
 export class Medio{
+    llave: string;
+    valor: number
+
+    constructor(
+        llave: string,
+        valor:number
+    ){
+        this.llave = llave,
+        this.valor = valor
+    }
+}
+
+export class Acceso{
     llave: string;
     valor: number
 
@@ -62,5 +81,27 @@ export class Cancion{
         this.minutos = minutos,
         this.segundos = segundos,
         this.interprete = interprete
+    }
+}
+
+export class ComentarioAlbum{
+    id: number;
+    texto: string;
+    created_at: Date;
+    usuario: number;
+    albumes: Array<Album>
+
+    constructor(
+        id: number,
+        texto: string,
+        created_at: Date,
+        usuario: number,
+        albumes:  Array<Album>,
+    ){
+        this.id = id,
+        this.texto = texto,
+        this.created_at = created_at,
+        this.usuario = usuario,
+        this.albumes = albumes
     }
 }

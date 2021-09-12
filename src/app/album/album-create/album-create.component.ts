@@ -61,11 +61,11 @@ export class AlbumCreateComponent implements OnInit {
   }
 
   showWarning(warning: string){
-    this.toastr.warning(warning, "Error de autenticación")
+    this.toastr.warning(warning, $localize`Error de autenticación`)
   }
 
   showSuccess(album: Album) {
-    this.toastr.success(`El album ${album.titulo} fue creado`, "Creación exitosa");
+    this.toastr.success($localize`El album ${album.titulo} fue creado`, $localize`Creación exitosa`);
   }
 
   cancelCreate(){
