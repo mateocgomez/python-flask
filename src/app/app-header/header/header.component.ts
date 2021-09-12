@@ -40,4 +40,10 @@ export class HeaderComponent implements OnInit {
         this.routerPath.navigate([menu])
     }
   }
+
+  switchLanguage(languageCode: string) {
+    const url = `/${languageCode}${this.routerPath.url}`
+    console.log(url)
+    location.href = url
+  }
 }
