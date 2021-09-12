@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   })
 export class UsuarioService {
 
-    private backUrl: string = "http://localhost:5000"
+    private backUrl: string = "https://ionic-project-team02.herokuapp.com/"
 
     constructor(private http: HttpClient) { }
 
