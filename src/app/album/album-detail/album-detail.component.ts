@@ -11,7 +11,6 @@ export class AlbumDetailComponent implements OnInit {
 
   @Input() album: Album;
   @Output() deleteAlbum = new EventEmitter();
-  @Output() changeAlbumAccess = new EventEmitter();
   
   userId: number;
   token: string;
@@ -38,7 +37,4 @@ export class AlbumDetailComponent implements OnInit {
     this.deleteAlbum.emit(this.album.id)
   }
 
-  cambiarAccessoAlbum(){
-    this.changeAlbumAccess.emit(this.album.id)
-  }
 }

@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
 import { Album, Cancion } from '../album';
 import { AlbumService } from '../album.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-album-list',
@@ -118,31 +117,6 @@ export class AlbumListComponent implements OnInit {
     this.ngOnInit()
   }
 
-  cambiarAccessoAlbum(){
-    let status = 'PRIVADO'
-    if(this.albumSeleccionado.acceso.llave == 'PRIVADO' ) {
-      status = "PUBLICO"
-    }
-
-    this.albumService.cambiarAccessoAlbum(status, this.userId, this.token, this.albumSeleccionado.id)
-    .subscribe(album => {
-      this.ngOnInit();
-      this.showStatusChangedSuccess(status);
-    },
-    error=> {
-      if(error.statusText === "UNAUTHORIZED"){
-        this.showWarning("Su sesión ha caducado, por favor vuelva a iniciar sesión.")
-      }
-      else if(error.statusText === "UNPROCESSABLE ENTITY"){
-        this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
-      }
-      else{
-        this.showError("Ha ocurrido un error. " + error.message)
-      }
-    })
-    this.ngOnInit()
-  }
-
   showError(error: string){
     this.toastr.error(error, "Error de autenticación")
   }
@@ -153,9 +127,5 @@ export class AlbumListComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success(`El album fue eliminado`, "Eliminado exitosamente");
-  }
-
-  showStatusChangedSuccess(status: string) {
-    this.toastr.success(`Album marcado como ${status}`, "Modificado exitosamente");
   }
 }

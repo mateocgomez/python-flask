@@ -24,7 +24,6 @@
                 <tr *ngFor="let album of mostrarAlbumes; index as i" (click)="onSelect(album, i)" [ngClass]="{'selected': i === indiceSeleccionado}">
                   <td >{{album.titulo}}</td>
                   <td >{{album.anio}}</td>
-                  <td >{{album.acceso?.llave}}</td>
                 </tr>
             </tbody>
           </table>
@@ -33,7 +32,7 @@
       </div>
     </div>
     <div class="col-md-8 col-xs-12">
-      <app-album-detail (deleteAlbum)="eliminarAlbum()" (changeAlbumAccess)="cambiarAccessoAlbum()" [album]="albumSeleccionado"></app-album-detail>
+      <app-album-detail (deleteAlbum)="eliminarAlbum()" [album]="albumSeleccionado"></app-album-detail>
     </div>
   </div>
 </div>

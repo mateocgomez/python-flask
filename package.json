@@ -3,10 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "node server.js",
+    "build": "ng build --prod --localize --base-href",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
+    "postinstall": "ng build --prod --localize --base-href"
+  },
+  "engines": {
+    "node": "12.14",
+    "npm": "6.4.1"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +36,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.2",
-    "@angular/cli": "~12.1.2",
+    "@angular/cli": "~12.2.5",
     "@angular/compiler-cli": "~12.1.2",
     "@angular/localize": "^12.1.2",
     "@types/jasmine": "~3.8.0",
