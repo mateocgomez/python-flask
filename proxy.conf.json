@@ -1,6 +1,6 @@
 {
     "/api/*":{
-        "target": "http://localhost:5000",
+        "target": "https://ionic-backend-grupo02.herokuapp.com",
         "secure": false,
         "logLevel": "debug",
         "pathRewrite":{
